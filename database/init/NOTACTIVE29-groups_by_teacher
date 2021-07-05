@@ -1,0 +1,10 @@
+CREATE TABLE classes_by_teacher (
+    "id" SERIAL primary key,
+    "year" INT,
+    "type" class_type DEFAULT 'YOGA',
+);
+CREATE INDEX ON classes_by_teacher("id");
+CREATE INDEX ON classes_by_teacher("students");
+ALTER TABLE usertable
+ADD FOREIGN KEY ("id") REFERENCES classes_by_teacher("teaching_classes");
+

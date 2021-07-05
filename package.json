@@ -1,0 +1,34 @@
+{
+  "name": "svelte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd frontend && yarn start",
+    "backend": "cd backend-CRUD && yarn start",
+    "start": "yarn run stop && concurrently \"yarn run frontend\" && \"yarn run backend\"",
+    "psql-local-install-db": " ./psql_local_install-db",
+    "psql-local-init-db": " ./psql_local_init-db.sh",
+    "psql-local-redo-db": " ./psql_local_redo-db",
+    "psql-local-clean-db": " ./psql_local_clean-db",
+    "psql-local-edit": "psql -h 127.0.0.1 -U cursuri_user -d cursuri_db",
+    "psql-docker-redo-db": "sudo systemctl stop postgresql && cd database && ./docker_redo-db.sh && cd .. && docker-compose build db && docker-compose up db",
+    "psql-docker-updatedb": "cd database && ./update_db.sh && cd .. ",
+    "psql-docker-redo-db-nocache": "sudo systemctl stop postgresql && cd database && ./docker_redo-db.sh && cd .. && docker-compose build --no-cache db && docker-compose up --force-recreate db",
+    "stop": "fuser -k 5000/tcp || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

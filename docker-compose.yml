@@ -1,0 +1,91 @@
+# docker-compose.yml
+version: "3"
+
+services:
+  theo-frontend:
+    container_name: theo-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: "soren365/theo-frontend:0.38"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=dev
+    ports:
+      - "3010:3010"
+    depends_on:
+      - theo-crud-backend
+      - theo-custom-backend
+
+  theo-crud-backend:
+    container_name: theo-crud-backend
+    build:
+      context: ./backend-CRUD
+      dockerfile: Dockerfile
+    image: "soren365/theo-crud-backend:0.01"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=dev
+    ports:
+      - "5011:5011"
+    depends_on:
+      - userstore
+      - theo-database
+
+  theo-custom-backend:
+    container_name: theo-custom-backend
+    build:
+      context: ./custom-backend
+      dockerfile: Dockerfile
+    image: "soren365/theo-custom-backend:0.01"
+    environment:
+      - NODE_ENV=dev
+    ports:
+      - 5010:5010
+    depends_on:
+      - userstore
+      - theo-database
+
+  userstore:
+    container_name: userstore
+    build:
+      context: ./userstore
+      dockerfile: Dockerfile
+    image: "soren365/userstore:0.01"
+    ports:     
+      - 6379:6379
+
+  theo-database:
+    container_name: theo-database
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    image: "soren365/theo-database:0.01"  
+    ports:
+        - 5432:5432
+    environment:
+        - POSTGRES_USER=theo_user
+        - POSTGRES_PASSWORD=theo_pass
+        - POSTGRES_DB=theo_db
+      
+    volumes:
+        - /home/soreng/docker/volumes/theo_db:/var/lib/postgresql/data
+
+volumes:
+    theo_db:
+
+  # proxy:
+  #   container_name: cursuri-proxy
+  #   image: soren365/cursuri-proxy:1.07
+  #   build:
+  #     context: ./proxy
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:80
+  #   depends_on:
+  #     - frontend
+  #     - backend
+
+ 

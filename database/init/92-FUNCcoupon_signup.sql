@@ -1,0 +1,70 @@
+-- create or replace function coupon_signup() RETURNS BOOLEAN AS $$
+-- DECLARE BEGIN
+
+-- INSERT INTO usertable (
+--         "user_id",
+--         "student_class_id",
+--         "presented_name",
+--         gender
+--     )
+-- VALUES (
+--         NEW."id",
+--         NEW."signup_in_class_id",
+--         NEW."name",
+--         NEW.gender
+--     );
+-- UPDATE classtable
+-- SET "students_id" = array_append("students_id", NEW."id")
+-- WHERE "id" = NEW."signup_in_class_id";
+-- UPDATE student
+-- SET yoga_year = classtable.year
+-- FROM classtable
+-- WHERE student.student_class_id = classtable.id;
+-- RETURN NEW;
+-- END;
+-- $$ LANGUAGE 'plpgsql';
+-- --//
+
+-- INSERT into coupon (
+--         coupon_code,
+--         "signup_code",
+--         class_teacher_id,
+--         city,
+--         coupon_type
+--     )
+-- VALUES ('VF3KC233UF6T', 'm102', 4, 'Cluj', 'student');
+
+
+-- CREATE TABLE coupon (
+--     "id" SERIAL primary key,
+--     coupon_code VARCHAR(12),
+--     "signup_code" VARCHAR(4),
+--     class_teacher_id INT,
+--     city cities,
+--     coupon_type coupon_type,
+--     "lastModified" TIMESTAMP,
+--     "timeCreated" TIMESTAMP default NOW()
+-- );
+-- CREATE INDEX ON coupon("id");
+-- CREATE INDEX ON coupon(coupon_code);
+-- --//
+
+-- CREATE TABLE usertable (
+--     "id" SERIAL UNIQUE,
+--     "name" TEXT,
+--     "email" TEXT primary key,
+--     "password" TEXT NOT NULL,
+--     "telephone" TEXT,
+--     "yoga_year" SMALLINT,
+--     gender genders,
+--     city cities,
+--     "signup_in_class_id" INT DEFAULT NULL,
+--     "signup_teacher_in_classes_id" INT [] DEFAULT array [0],
+--     "is_administrator" BOOLEAN DEFAULT FALSE,
+--     "my_role" my_role DEFAULT 'student',
+--     "lastModified" TIMESTAMP,
+--     "timeCreated" TIMESTAMP default NOW()
+-- );
+-- CREATE INDEX ON usertable("id");
+-- CREATE INDEX ON usertable("email");
+-- --//

@@ -1,0 +1,11 @@
+import { QMediadestinationresource as objMediadestinationresource from '../graphqlQueriesMS/__generated__/QMediadestinationresource }'
+
+import { Mediadestinationresource  as gqlMediadestinationresource } from '*.graphqls
+
+
+const MediadestinationresourceTransform = (raw: gqlMediadestinationresource): objMediadestinationresource => {
+    return {
+        Id: `${raw.Id}`,atAgency: `${raw.atAgency}`,atDestination: `${raw.atDestination}`,lastModified: `${raw.lastModified}`,lastModifiedBy: `${raw.lastModifiedBy}`,mainImage: `${raw.mainImage}`,mainImageSignedUrl: `${raw.mainImageSignedUrl}`,guideImage: `${raw.guideImage}`,guideSignedUrl: `${raw.guideSignedUrl}`,mapImage: `${raw.mapImage}`,mapImageSignedUrl: `${raw.mapImageSignedUrl}`,thumbnailImage: `${raw.thumbnailImage}`,thumbnailImageSignedUrl: `${raw.thumbnailImageSignedUrl}`,imageGallery_1: `${raw.imageGallery_1}`,imageGallery_1SignedUrl: `${raw.imageGallery_1SignedUrl}`,imageGallery_2: `${raw.imageGallery_2}`,imageGallery_2SignedUrl: `${raw.imageGallery_2SignedUrl}`,imageGallery_3: `${raw.imageGallery_3}`,imageGallery_3SignedUrl: `${raw.imageGallery_3SignedUrl}`,imageGallery_4: `${raw.imageGallery_4}`,imageGallery_4SignedUrl: `${raw.imageGallery_4SignedUrl}`,imageGallery_5: `${raw.imageGallery_5}`,imageGallery_5SignedUrl: `${raw.imageGallery_5SignedUrl}`,imageGallery_6: `${raw.imageGallery_6}`,imageGallery_6SignedUrl: `${raw.imageGallery_6SignedUrl}`,imageGallery_7: `${raw.imageGallery_7}`,imageGallery_7SignedUrl: `${raw.imageGallery_7SignedUrl}`,imageGallery_8: `${raw.imageGallery_8}`,imageGallery_8SignedUrl: `${raw.imageGallery_8SignedUrl}`,imageGallery_9: `${raw.imageGallery_9}`,imageGallery_9SignedUrl: `${raw.imageGallery_9SignedUrl}`,imageGallery_10: `${raw.imageGallery_10}`,imageGallery_10SignedUrl: `${raw.imageGallery_10SignedUrl}`,signedUrlMassUpdate: `${raw.signedUrlMassUpdate}`,signedUrlMassUpdate: `${raw.signedUrlMassUpdate}`,signedUrlMassUpdate: `${raw.signedUrlMassUpdate}`,timeCreated: `${raw.timeCreated}`
+    }
+}
+        

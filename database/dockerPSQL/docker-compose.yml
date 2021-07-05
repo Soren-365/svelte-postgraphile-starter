@@ -1,0 +1,24 @@
+version: "3.1"
+services:
+  db:
+    container_name: cursuri-database
+    build:
+        context: ./database/dockerPSQL
+        dockerfile: Dockerfile
+    image: "soren365/cursuri-database:0.01"
+    networks:
+        - network
+    ports:
+        - 5432:5432
+    environment:
+        - POSTGRES_USER=cursuri_user
+        - POSTGRES_PASSWORD=cursuri_pass
+        - POSTGRES_DB=cursuri_db
+    volumes:
+        - /home/soreng/docker/volumes/cursuri_db:/var/lib/postgresql/data
+
+networks:
+    network:
+
+volumes:
+    cursuri_db:

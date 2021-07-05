@@ -1,0 +1,16 @@
+
+cd ../init
+
+echo we are in: ${PWD}
+
+sudo rm -R ../dump/dump.sql
+
+touch ../dump/dump.sql
+
+for f in *.sql; do cat $f >> ../dump/dump.sql; done 
+
+cd ../localPSQL
+
+psql service=CURSURI_DB -f PSQL_redo_db.sql
+
+
