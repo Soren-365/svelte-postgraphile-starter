@@ -1,0 +1,1 @@
+A basic svelte + postgraphile starter with apollo graphql, ws and live queries (clients active data sync)
