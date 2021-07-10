@@ -1,6 +1,6 @@
 FROM postgres:alpine
 
-ENV POSTGRES_PASSWORD=cursuri_pass
+ENV POSTGRES_PASSWORD=svelte_pass
 
 # sudo apt-get install postgresql-server-dev-all
 # sudo apt-get install postgresql-common

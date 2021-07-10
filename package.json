@@ -12,7 +12,7 @@
     "psql-local-init-db": " ./psql_local_init-db.sh",
     "psql-local-redo-db": " ./psql_local_redo-db",
     "psql-local-clean-db": " ./psql_local_clean-db",
-    "psql-local-edit": "psql -h 127.0.0.1 -U cursuri_user -d cursuri_db",
+    "psql-local-edit": "psql -h 127.0.0.1 -U svelte_user -d svelte_db",
     "psql-docker-redo-db": "sudo systemctl stop postgresql && cd database && ./docker_redo-db.sh && cd .. && docker-compose build db && docker-compose up db",
     "psql-docker-updatedb": "cd database && ./update_db.sh && cd .. ",
     "psql-docker-redo-db-nocache": "sudo systemctl stop postgresql && cd database && ./docker_redo-db.sh && cd .. && docker-compose build --no-cache db && docker-compose up --force-recreate db",

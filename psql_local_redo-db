@@ -1,13 +1,11 @@
 
-cd ../init
-
-echo we are in: ${PWD}
+cd ./database/init
 
 sudo rm -R ../dump/dump.sql
 
 touch ../dump/dump.sql
 
-for f in *.sql; do cat $f >> ../dump/dump.sql; done 
+for f in *.sql; do cat $f >> ../dump/dump.sql; echo "\n\n" >> ../dump/dump.sql;done 
 
 cd ../localPSQL
 

@@ -1,0 +1,41 @@
+
+    {
+  "name": "cursuri",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "image-rm-cursuri-userstore": "docker rmi --force $( docker images soren365/cursuri-userstore -q | uniq)",
+    "image-rm-cursuri-backend": "docker rmi --force $( docker images soren365/cursuri-backend -q | uniq)",
+    "image-rm-cursuri-frontend": "docker rmi --force $( docker images soren365/cursuri-frontend -q | uniq)",
+    "image-rm-cursuri-database": "docker rmi --force $( docker images soren365/cursuri-database -q | uniq)",
+    "image-rm-dangling": "docker rmi $(docker images -f dangling=true -q)",
+    "docker-system-prune-all": "docker system prune -a",
+    "docker-compose-nocache": "docker system prune && docker-compose build --no-cache",
+    "docker-compose-with-args": "",
+    "docker-free-storage": "docker rm $(docker ps -q -f 'status=exited') && docker rmi $(docker images -q -f dangling=true)",
+    "frontend-install-run": "cd frontend && yarn install && yarn start",
+    "backend-install-run": "cd backend && yarn install && yarn start",
+    "cold-start": "npm run checkEnv && concurrently \"npm run frontend-install-run\" && \"npm run backend-install-run\"",
+    "stop-all": "fuser -k 3100/tcp & fuser -k 5000/tcp || exit 0",
+  
+    "stop-frontend": "fuser -k 3100/tcp || exit 0",
+    "addPath": "./addPathToProfile.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "node-mailjet": "^3.3.1",
+    "npm-scripts": "^1.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.1"
+  }
+}

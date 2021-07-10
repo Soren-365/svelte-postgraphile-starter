@@ -1,0 +1,6 @@
+#/bin/sh
+echo please write city name of type TEXT
+read INPUTVAR
+psql -h 127.0.0.1 -U cursuri_user -d cursuri_db -c 'DROP FUNCTION testfunc'
+psql -h 127.0.0.1 -U cursuri_user -d cursuri_db -c '\i insert.sql'
+psql -h 127.0.0.1 -U cursuri_user -d cursuri_db -c 'SELECT * FROM testfunc('\'${INPUTVAR}\'');'
